@@ -1,0 +1,19 @@
+{
+    "total_tests": 3,
+    "passed_tests": 3,
+    "score_percentage": 100.0,
+    "results": [
+        {
+            "test": 1,
+            "result": 1
+        },
+        {
+            "test": 2,
+            "result": 1
+        },
+        {
+            "test": 3,
+            "result": 1
+        }
+    ]
+}

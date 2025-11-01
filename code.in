@@ -1,0 +1,3 @@
+# Calculează pătratul unui număr
+n = int(input())
+print(n * n)
