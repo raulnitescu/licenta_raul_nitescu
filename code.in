@@ -1,3 +1,4 @@
-# Calculează pătratul unui număr
 n = int(input())
-print(n * n)
+primes = [2] + [i for i in range(3, n, 2) if all(i % j for j in range(3, int(i**0.5)+1, 2))]
+for p in primes:
+    print(p)

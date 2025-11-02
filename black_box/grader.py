@@ -1,23 +1,22 @@
 import json
 from pathlib import Path
 
-def grade_tests(results, total_tests, results_file="results.json"):
-    """Calculează scorul total și salvează fișierul JSON."""
-    passed_tests = sum(r.get("result", 0) for r in results)
-    score_percentage = round((passed_tests / total_tests) * 100, 2)
-
-    summary = {
-        "total_tests": total_tests,
-        "passed_tests": passed_tests,
-        "score_percentage": score_percentage,
-        "results": results
-    }
-
-    Path(results_file).write_text(json.dumps(summary, indent=4), encoding="utf-8")
+def grade_tests(results, total_tests):
+    """
+    Calculează scorul total și salvează rezultatele în results.json.
+    Returnează scorul procentual (float).
+    """
+    passed = sum(1 for r in results if r["result"] == 1)
+    score = (passed / total_tests) * 100.0
 
     print("\n📊 Rezumat final:")
-    print(f"   Teste trecute: {passed_tests}/{total_tests}")
-    print(f"   Scor total: {score_percentage}%")
-    print(f"📄 Rezultatele detaliate au fost salvate în '{results_file}'")
+    print(f"   Teste trecute: {passed}/{total_tests}")
+    print(f"   Scor total: {score}%")
 
-    return summary
+    results_file = Path(__file__).resolve().parent.parent / "results.json"
+    with open(results_file, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=4, ensure_ascii=False)
+
+    print("📄 Rezultatele detaliate au fost salvate în 'results.json'")
+
+    return score

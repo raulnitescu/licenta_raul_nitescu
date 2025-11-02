@@ -4,7 +4,6 @@ from grader import grade_tests
 from file_manager import load_code, cleanup_temp
 
 def main():
-    # Calea către folderul părinte (D:\RaulWork\licenta)
     base_path = Path(__file__).resolve().parent.parent
 
     code_file = load_code(base_path)
@@ -38,9 +37,27 @@ def main():
                 "got": actual_output
             })
 
-    grade_tests(results, total_tests)
+    # === Aici se calculează scorul general ===
+    score_percentage = grade_tests(results, total_tests)
+
+    # === 🔹 Adăugăm analiza AI dacă toate testele au trecut ===
+    if score_percentage == 100.0:
+        print("\n🎯 Toate testele au fost trecute! Se lansează analiza AI...\n")
+
+        from code_analysis.analyzer import analyze_code
+
+        cerinta_path = base_path / "cerinta.in"
+        temp_code_path = base_path / "temp_user_code.py"
+
+        # scriem codul temporar pentru analiză
+        temp_code_path.write_text(code_file.read_text(encoding="utf-8"), encoding="utf-8")
+
+        ai_result = analyze_code(temp_code_path, cerinta_path)
+        print(ai_result["feedback"])
+    else:
+        print("\n⚠️ Codul nu a trecut toate testele — analiza AI nu se va face.")
+
     cleanup_temp(code_file)
 
 if __name__ == "__main__":
     main()
-

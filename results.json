@@ -1,22 +1,14 @@
-{
-    "total_tests": 3,
-    "passed_tests": 0,
-    "score_percentage": 0.0,
-    "results": [
-        {
-            "test": 1,
-            "result": 0,
-            "error": "File \"temp_user_code.py\", line 4\n    \n               ^\nSyntaxError: unexpected EOF while parsing"
-        },
-        {
-            "test": 2,
-            "result": 0,
-            "error": "File \"temp_user_code.py\", line 4\n    \n               ^\nSyntaxError: unexpected EOF while parsing"
-        },
-        {
-            "test": 3,
-            "result": 0,
-            "error": "File \"temp_user_code.py\", line 4\n    \n               ^\nSyntaxError: unexpected EOF while parsing"
-        }
-    ]
-}
+[
+    {
+        "test": 1,
+        "result": 1
+    },
+    {
+        "test": 2,
+        "result": 1
+    },
+    {
+        "test": 3,
+        "result": 1
+    }
+]

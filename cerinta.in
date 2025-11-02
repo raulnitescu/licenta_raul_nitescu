@@ -1,0 +1,4 @@
+Scrie un program care citește un număr n de la tastatură (n > 10, mai mic decât 100000) și afișează toate numerele prime mai mici decât n.
+Programul trebuie să fie corect și să funcționeze pentru valori mari de n.
+Pentru eficiență, nu verifica numerele pare mai mari decât 2 și, dacă poți, folosește o metodă optimă ca ciurul lui Eratostene.
+Scopul este să înțelegi logica numerelor prime și să faci codul cât mai clar și prietenos pentru copii.
