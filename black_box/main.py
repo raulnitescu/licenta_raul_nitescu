@@ -11,8 +11,8 @@ def main():
     results = []
 
     for i in range(1, total_tests + 1):
-        input_file = base_path / f"input{i}.in"
-        output_file = base_path / f"output{i}.in"
+        input_file = base_path / "sandbox" / "inputs" / f"input{i}.in"
+        output_file = base_path / "sandbox" / "outputs" / f"output{i}.in"
 
         if not input_file.exists() or not output_file.exists():
             print(f"⚠️ Test {i}: fișiere lipsă (input/output).")
@@ -37,17 +37,17 @@ def main():
                 "got": actual_output
             })
 
-    # === Aici se calculează scorul general ===
+    # Calculează scorul general
     score_percentage = grade_tests(results, total_tests)
 
-    # === 🔹 Adăugăm analiza AI dacă toate testele au trecut ===
+    # Analiza AI dacă toate testele au trecut
     if score_percentage == 100.0:
         print("\n🎯 Toate testele au fost trecute! Se lansează analiza AI...\n")
 
         from code_analysis.analyzer import analyze_code
 
         cerinta_path = base_path / "cerinta.in"
-        temp_code_path = base_path / "temp_user_code.py"
+        temp_code_path = base_path / "sandbox" / "temp" / "temp_user_code.py"
 
         # scriem codul temporar pentru analiză
         temp_code_path.write_text(code_file.read_text(encoding="utf-8"), encoding="utf-8")

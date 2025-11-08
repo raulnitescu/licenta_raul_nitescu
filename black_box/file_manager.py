@@ -1,13 +1,13 @@
 from pathlib import Path
 
 def load_code(base_path: Path):
-    """Citește codul din code.in și îl scrie într-un fișier temporar."""
+    """Citește codul din code.in și îl scrie în sandbox/temp/temp_user_code.py"""
     code_file_path = base_path / "code.in"
     if not code_file_path.exists():
         raise FileNotFoundError(f"Nu s-a găsit {code_file_path}")
 
     code_text = code_file_path.read_text(encoding="utf-8")
-    temp_file = base_path / "temp_user_code.py"
+    temp_file = base_path / "sandbox" / "temp" / "temp_user_code.py"
     temp_file.write_text(code_text, encoding="utf-8")
     return temp_file
 
